@@ -1,11 +1,11 @@
 from flask import Flask,jsonify
 
-from toDO.routes import task_bp
+from toDO.routes import tasks_bp
 
 app = Flask(__name__)
 
 
-app.register_blueprint(task_bp,url_prefix='/tasks')
+app.register_blueprint(tasks_bp,url_prefix='/tasks')
 
 
 @app.route('/')

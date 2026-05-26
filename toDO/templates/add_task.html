@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создать Задачу</title>
+</head>
+<body>
+<h1>добавление задач</h1>
+    <form action="{{url_for('tasks.add_task')}}" method="POST">
+
+    <label>Заголовок:</label><input name="title"><br>
+    <label>описание:</label><input name="description"><br>
+    <button>Создать</button>
+    </form>
+    
+</body>
+</html>
