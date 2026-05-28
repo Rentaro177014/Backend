@@ -38,3 +38,42 @@ def add_task():
         return redirect(url_for('tasks.get_all_tasks'))
 
     return render_template('add_task.html')
+
+
+
+
+@tasks_bp.route('/delete/<int>:id>', methods=['POST'])
+def delete_task(id):
+    for task in tasks_db:
+        if task.get('id') == id:
+            task.remove(task)
+            break
+
+    return redirect(url_for('tasks.get_all_tasks'))
+
+
+@tasks_bp.route('/update/<int:id>')
+def update_task(id):
+        if request.method == 'POST':
+            title = request.form.get('title')
+            description = request.form.get('description')
+
+            for task in tasks_db:
+                if task.get('id') == id:
+                    if title:
+                        task.update({'title':title})
+                    if description:
+                        task.update({'description':description})
+                
+                
+            
+
+
+        task_one = []
+        for task in tasks_db:
+            if task.get('id') == id:
+                task_one.append(task)
+        return render_template('update.html',task_one=task_one)
+
+
+
